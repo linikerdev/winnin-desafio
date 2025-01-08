@@ -1,24 +1,27 @@
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
-import { Provider } from 'react-redux'
-import { persistor, store } from './state/index.ts'
+import { Provider, useSelector } from 'react-redux'
+import { persistor, RootState, store } from './state/index.ts'
 import { PersistGate } from 'redux-persist/integration/react'
 import { ThemeProvider } from 'styled-components'
 import GlobalStyle from './style/GlobalStyle.tsx'
+import { lightTheme } from './style/theme/light.ts'
 import { darkTheme } from './style/theme/dark.ts'
-import { ApolloProvider } from '@apollo/client'
-import client from './config/graphql.client.ts'
 
+const RootApp = () => {
+  const theme = useSelector((state: RootState) => state.themeReducer.theme);
+  return (
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <GlobalStyle />
+      <App />
+    </ThemeProvider>
+  );
+};
 
 createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
-    <ApolloProvider client={client}>
-      <PersistGate loading={null} persistor={persistor}>
-        <ThemeProvider theme={darkTheme}>
-          <GlobalStyle />
-          <App />
-        </ThemeProvider>
-      </PersistGate>
-    </ApolloProvider>
-  </Provider>,
-)
+    <PersistGate loading={null} persistor={persistor}>
+      <RootApp />
+    </PersistGate>
+  </Provider>
+);

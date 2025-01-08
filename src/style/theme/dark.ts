@@ -1,12 +1,13 @@
 export const darkTheme = {
     name: "dark",
-
+    fontfamily: `"Mulish", serif`,
     colors: {
-        primary: "#f3f3f3",
-        secondary: "#333",
+        primary: "#6324C6",
+        secondary: "#FFB800",
 
         background: "#333",
-        text: "#f3f3f3",
+        text: "#222",
+        textInverted: "#fff",
     },
     size: {
         small: "14px",

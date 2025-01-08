@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import MainLayout from './components/templates/MainLayout';
 import { useGetAnimesQuery } from './services/api';
+import { useDispatch } from 'react-redux';
+import { changeTheme } from './state/theme/reducer';
 
 const App: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const dispatch = useDispatch();
 
-  const { data, isError } = useGetAnimesQuery({ page: 1, per_page: 40 });
+  const { data, isError } = useGetAnimesQuery({ page: 1, per_page: 40, genreIn: ['Drama'], search: 'Naruto' });
   console.log('data', data)
-  console.log('isError', isError)
+
 
   const animes = [
     {
@@ -39,18 +41,22 @@ const App: React.FC = () => {
   };
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+    dispatch(changeTheme());
   };
 
   return (
-    <MainLayout
-      searchValue={searchValue}
-      onSearchChange={(e) => setSearchValue(e.target.value)}
-      onSearch={handleSearch}
-      animes={animes}
-      theme={theme}
-      onThemeToggle={toggleTheme}
-    />
+    <>
+      {/* {JSON.stringify(data.Page.media)} */}
+      <MainLayout
+        searchValue={searchValue}
+        onSearchChange={(e) => setSearchValue(e.target.value)}
+        onSearch={handleSearch}
+        animes={animes}
+        onThemeToggle={toggleTheme}
+        hasError={isError}
+      />
+    </>
+
   );
 };
 

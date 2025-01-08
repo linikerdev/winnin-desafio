@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../organisms/Header';
 import Content from '../organisms/Content';
 import Footer from '../organisms/Footer';
+import { Container } from '../../style/GlobalStyle';
 
 type MainLayoutProps = {
     searchValue: string;
@@ -14,24 +15,27 @@ type MainLayoutProps = {
         tags: string[];
         rating: number;
     }[];
-    theme: 'light' | 'dark';
     onThemeToggle: () => void;
+    hasError: boolean
 };
 
-const MainLayout: React.FC<MainLayoutProps> = ({ searchValue, onSearchChange, onSearch, animes, theme, onThemeToggle }) => {
+const MainLayout: React.FC<MainLayoutProps> = ({ searchValue, onSearchChange, onSearch, animes, onThemeToggle, hasError }) => {
     return (
-        <div className={`layout ${theme}`}>
-            <Header
-                searchValue={searchValue}
-                onSearchChange={onSearchChange}
-                onSearch={onSearch}
-                theme={theme}
-                onThemeToggle={onThemeToggle}
-            />
-            <main className="main-container">
-                <Content animes={animes} theme={theme} />
-            </main>
-            <Footer theme={theme} />
+        <div>
+            <Container>
+                <Header
+                    searchValue={searchValue}
+                    onSearchChange={onSearchChange}
+                    onSearch={onSearch}
+                    onThemeToggle={onThemeToggle}
+                />
+                <main className="main-container">
+                    {hasError && <div>Aconteceu um erro, tente mais tarde.</div>}
+
+                    {!hasError && <Content animes={animes} />}
+                </main>
+                <Footer />
+            </Container>
         </div>
     );
 };

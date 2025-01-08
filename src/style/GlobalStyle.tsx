@@ -1,7 +1,8 @@
-import { GlobalStyleComponent } from "styled-components";
+import styled from "styled-components";
+import { StyledComponentProps } from "styled-components";
 import { createGlobalStyle } from "styled-components";
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle: StyledComponentProps = createGlobalStyle`
 * {
     margin: 0;
     padding: 0;
@@ -12,14 +13,10 @@ body{
     background-color: ${props => props.theme.colors.background};
     font-size:${props => props.theme.size.medium};
     color: ${props => props.theme.colors.text};
-    font-family: 'Roboto', sans-serif;
+    font-family:${props => props.theme.fontfamily};
 }
 /* Estilos globais */
 
-
-header h1 {
-  margin: 0;
-}
 
 .theme-toggle {
   margin-left: 10px;
@@ -115,5 +112,22 @@ input {
 }
 `;
 
+export const Container = styled.div`
+  max-width: 1366px;
+  margin: 0 auto;
+  padding: 0 20px;
+`;
 
-export default GlobalStyle as GlobalStyleComponent
+export default GlobalStyle
+
+
+
+
+
+
+
+
+
+
+
+

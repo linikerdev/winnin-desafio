@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../atoms/Button';
 import { Input } from '../atoms/Input';
+import styled from 'styled-components';
 
 type SearchBarProps = {
     placeholder: string;
@@ -11,11 +12,18 @@ type SearchBarProps = {
 
 const SearchBar: React.FC<SearchBarProps> = ({ placeholder, value, onChange, onSearch }) => {
     return (
-        <div className="search-bar">
-            <Input placeholder={placeholder} value={value} onChange={onChange} />
-            <Button text="Buscar" onClick={onSearch} />
-        </div>
+        <SearchBarContainer>
+            <Input css={{ flex: 1 }} placeholder={placeholder} value={value} onChange={onChange} />
+            <Button isActive text="Buscar" onClick={onSearch} />
+        </SearchBarContainer>
     );
 };
 
 export default SearchBar;
+
+
+const SearchBarContainer = styled.div`
+    display:flex;
+    gap: 10px;
+    margin: 24px 152px;
+`                  

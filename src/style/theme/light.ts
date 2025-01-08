@@ -1,12 +1,13 @@
 export const lightTheme = {
     name: "light",
-
+    fontfamily: `"Mulish", serif`,
     colors: {
-        primary: "#333",
-        secondary: "#f3f3f3",
+        primary: "#6324C6",
+        secondary: "#FFB800",
 
-        background: "#f3f3f3",
-        text: "#333",
+        background: "#fff",
+        text: "#fff",
+        textInverted: "#222",
     },
     size: {
         small: "14px",
