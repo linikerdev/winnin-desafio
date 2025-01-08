@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import MainLayout from './components/templates/MainLayout';
+import { useGetAnimesQuery } from './services/api';
 
 const App: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+  const { data, isError } = useGetAnimesQuery({ page: 1, per_page: 40 });
+  console.log('data', data)
+  console.log('isError', isError)
 
   const animes = [
     {
