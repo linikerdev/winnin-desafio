@@ -6,8 +6,8 @@ export const darkTheme = {
         secondary: "#FFB800",
 
         background: "#333",
-        text: "#222",
-        textInverted: "#fff",
+        text: "#fff",
+        textInverted: "#fafafa",
     },
     size: {
         small: "14px",

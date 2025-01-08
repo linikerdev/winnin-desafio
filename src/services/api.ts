@@ -1,5 +1,4 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
-import { gql } from 'graphql-request'
 import { graphqlRequestBaseQuery } from '@rtk-query/graphql-request-base-query'
 import { GET_ANIMES } from './queries/animes'
 
@@ -8,9 +7,9 @@ export const postStatuses = ['draft', 'published', 'pending_review'] as const
 
 export interface Pagination {
   page: number
-  per_page: number,
-  genreIn?: string[]
-  search?: string
+  perPage: number,
+  genreIn?: string[] | null
+  search?: string | null
 }
 
 export const api = createApi({
@@ -19,13 +18,11 @@ export const api = createApi({
   }),
   endpoints: (builder) => ({
     getAnimes: builder.query({
-      query: ({ page, per_page, genreIn, search }: Pagination) => ({
+      query: ({ page, perPage }: Pagination) => ({
         document: GET_ANIMES,
         variables: {
-          page,
-          per_page,
-          genreIn,
-          search
+          page: Number(page),
+          perPage: Number(perPage),
         },
       }),
     }),

@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
   return (
     <FooterSlice>
       <Logo css={{ fontSize: '20px !important', lineHeight: 1.3 }} />
-      <p>Todos os direitos reservados</p>
+      <p>TODOS OS DIREITOS RESERVADOS</p>
     </FooterSlice>
   );
 };

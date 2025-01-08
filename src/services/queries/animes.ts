@@ -1,5 +1,5 @@
 // filepath: /home/liniquersilva/projetos/liniker/winnin-desafio/src/queries/getAnimes.ts
-import { gql } from '@apollo/client';
+import { gql, } from '@apollo/client';
 
 export const GET_ANIMES = gql`
 query GetAnimes($page: Int, $perPage: Int, $genreIn: [String], $search: String) {
@@ -12,11 +12,12 @@ query GetAnimes($page: Int, $perPage: Int, $genreIn: [String], $search: String) 
         native
       }
       genres,
+      popularity,
       coverImage {
-        large
+        large,
+        extraLarge
       },
-    }
-  },
-  
+    },
+},
 }
 `

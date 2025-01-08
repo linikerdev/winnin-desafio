@@ -1,33 +1,117 @@
 
 import React from 'react';
-import Image from '../atoms/Image';
-import Tag from '../atoms/Tag';
+import styled from 'styled-components';
+import { Anime } from '../../interfaces/animes.interface';
 
-type AnimeCardProps = {
-    anime: {
-        id: number;
-        image: string;
-        title: string;
-        tags: string[];
-        rating: number;
-    };
-};
 
-const AnimeCard: React.FC<AnimeCardProps> = ({ anime }) => {
+const AnimeCard: React.FC<Anime> = ({ image, title, genres, rating }: Anime) => {
     return (
-        <div className="anime-card">
-            <Image src={anime.image} alt={anime.title} />
-            <div className="card-content">
-                <div className="title">{anime.title}</div>
-                <div className="tags">
-                    {anime.tags.map((tag, index) => (
-                        <Tag text={tag} key={index} />
+        <AnimeCardContainer $imageUrl={image}>
+            <AnimeCardContent>
+                <AnimeCardTitle>{title}</AnimeCardTitle>
+                <AnimeCardBoxGenders>
+                    {genres.map((gender, index) => (
+                        <AnimeCardGender key={index}>
+                            <AnimeCardGender>
+                                {gender}
+                            </AnimeCardGender>
+                        </AnimeCardGender>
                     ))}
-                </div>
-                <div className="rating">{anime.rating}%</div>
-            </div>
-        </div>
+                </AnimeCardBoxGenders>
+            </AnimeCardContent>
+            <AnimeCardRate>{rating}%</AnimeCardRate>
+        </AnimeCardContainer>
     );
 };
 
 export default AnimeCard;
+
+const AnimeCardContent = styled.div``
+
+const AnimeCardContainer = styled.div<{ $imageUrl: string }>`
+    width: 317px;
+    height: 270px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    background-image: url(${props => props.$imageUrl});
+    background-size: cover;
+    background-position: center;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+    }
+
+    & > ${AnimeCardContent} {
+        position: relative;
+        z-index: 2;
+    }
+`;
+
+
+
+const AnimeCardTitle = styled.div`
+    color: #fff;
+    font-weight: 700;
+    font-size: 20px;
+    padding: 8px;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+`
+
+const AnimeCardBoxGenders = styled.div`
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+`
+
+const AnimeCardGender = styled.div`
+    background-color:  ${({ theme }) => theme.colors.primary};
+    color: #fff;
+    font-weight: 400;
+    padding: 3px 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    border-radius: 4px;
+    line-height: 15.06px;
+`
+
+const AnimeCardRate = styled.div`
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: ${({ theme }) => theme.colors.secondary};
+    color: #fff;
+    font-size: 24px;
+    width: 68px;
+    height: 37px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    z-index: 2;
+    
+`
+
+

@@ -1,26 +1,18 @@
 import React from 'react';
-import AnimeCard from '../molecules/AnimeCard';
+import GridCards from './GridCards';
+import { AnimesState } from '../../interfaces/animes.interface';
+
 
 type ContentProps = {
-  animes: {
-    id: number;
-    image: string;
-    title: string;
-    tags: string[];
-    rating: number;
-  }[];
-  theme: 'light' | 'dark';
+  animes: AnimesState[];
+  theme?: 'light' | 'dark';
 };
 
 
-const Content: React.FC<ContentProps> = ({ animes, theme }) => {
+const Content: React.FC<ContentProps> = ({ animes }) => {
   return (
-    <div className={`card-grid ${theme}`}>
-      {animes.map((anime) => (
-        <AnimeCard anime={anime} key={anime.id} />
-      ))}
-    </div>
-  );
+    <GridCards animes={animes} />
+  )
 };
 
 export default Content;

@@ -3,23 +3,19 @@ import Header from '../organisms/Header';
 import Content from '../organisms/Content';
 import Footer from '../organisms/Footer';
 import { Container } from '../../style/GlobalStyle';
+import { AnimesState } from '../../interfaces/animes.interface';
 
 type MainLayoutProps = {
     searchValue: string;
     onSearchChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onSearch: () => void;
-    animes: {
-        id: number;
-        image: string;
-        title: string;
-        tags: string[];
-        rating: number;
-    }[];
+    animes: AnimesState[];
     onThemeToggle: () => void;
     hasError: boolean
 };
 
 const MainLayout: React.FC<MainLayoutProps> = ({ searchValue, onSearchChange, onSearch, animes, onThemeToggle, hasError }) => {
+    
     return (
         <div>
             <Container>

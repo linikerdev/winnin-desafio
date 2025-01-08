@@ -18,8 +18,7 @@ const Button: React.FC<ButtonProps> = ({ text, onClick, isActive }) => {
 export default Button
 
 const ButtonItem = styled.button`
-
-    background-color:${({ theme }) => theme.colors.background};;
+    background-color:${({ theme }) => theme.colors.text};;
     color: ${({ theme }) => theme.colors.primary};
     font-weight: 600;
     border: 1px solid ${({ theme }) => theme.colors.primary};
@@ -37,7 +36,6 @@ const ButtonItem = styled.button`
     }
     &:hover {
         background-color: ${({ theme }) => theme.colors.primary}22; /* Adding alpha to the hover background color */
-        color: ${({ theme }) => theme.colors.text};
         &.active {
             background-color: ${({ theme }) => theme.colors.primary}ff;
         } 
