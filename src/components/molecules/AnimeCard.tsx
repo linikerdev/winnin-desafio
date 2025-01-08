@@ -19,7 +19,7 @@ const AnimeCard: React.FC<Anime> = ({ image, title, genres, rating }: Anime) => 
                     ))}
                 </AnimeCardBoxGenders>
             </AnimeCardContent>
-            <AnimeCardRate>{rating}%</AnimeCardRate>
+            <AnimeCardRate $rating={rating}>{rating}%</AnimeCardRate>
         </AnimeCardContainer>
     );
 };
@@ -97,7 +97,7 @@ const AnimeCardGender = styled.div`
     line-height: 15.06px;
 `
 
-const AnimeCardRate = styled.div`
+const AnimeCardRate = styled.div<{ $rating: string }>`
     position: absolute;
     bottom: 10px;
     right: 10px;
@@ -111,7 +111,12 @@ const AnimeCardRate = styled.div`
     align-items: center;
     border-radius: 4px;
     z-index: 2;
-    
-`
 
+    background-color: ${({ $rating }) => {
+        if (parseInt($rating) < 50) return '#E92151';
+        if (parseInt($rating) >= 50 && parseInt($rating) <= 80) return '#FFB800';
+        return '#01ADA6';
+    }};
+`
+// seguindo a regra: Abaixo de 50, vermelho, entre 50 e 80, amarelo, acima de 80, verde.
 

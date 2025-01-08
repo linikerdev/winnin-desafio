@@ -12,7 +12,7 @@ query GetAnimes($page: Int, $perPage: Int, $genreIn: [String], $search: String) 
         native
       }
       genres,
-      popularity,
+      averageScore,
       coverImage {
         large,
         extraLarge

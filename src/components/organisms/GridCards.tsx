@@ -15,13 +15,11 @@ const GridCards: React.FC<GridCardsProps> = ({ animes }) => {
                     title={anime.title.english}
                     genres={anime.genres}
                     image={anime.coverImage.large}
-                    popularity={anime.popularity}
-                    rating={anime.id}
+                    rating={anime.averageScore}
                     id={anime.id}
                     key={anime.id}
                 />
-            )
-            )}
+            ))}
         </GridContainer>
     );
 };

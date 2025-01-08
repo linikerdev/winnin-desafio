@@ -3,7 +3,6 @@ export interface Anime {
     image: string;
     title: string;
     genres: string[];
-    popularity: string;
     rating: number;
 }
 
@@ -11,7 +10,7 @@ export interface AnimesState {
     id: number
     title: Title
     genres: string[]
-    popularity: string;
+    averageScore: number;
     coverImage: CoverImage
 }
 
