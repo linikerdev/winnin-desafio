@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import AnimeCard from '../molecules/AnimeCard';
 import { AnimeResponseState } from '../../interfaces/animes.interface';

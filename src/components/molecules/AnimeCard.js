@@ -1,33 +1,11 @@
-
-import React from 'react';
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import styled from 'styled-components';
-import { Anime } from '../../interfaces/animes.interface';
-
-const AnimeCard: React.FC<Anime> = ({ image, title, genres, rating }: Anime) => {
-    return (
-        <AnimeCardContainer $imageUrl={image}>
-            <AnimeCardContent>
-                <AnimeCardTitle>{title}</AnimeCardTitle>
-                <AnimeCardBoxGenders>
-                    {genres.map((gender, index) => (
-                        <AnimeCardGender key={index}>
-                            <AnimeCardGender>
-                                {gender}
-                            </AnimeCardGender>
-                        </AnimeCardGender>
-                    ))}
-                </AnimeCardBoxGenders>
-            </AnimeCardContent>
-            <AnimeCardRate $rating={rating || 0}>{rating}%</AnimeCardRate>
-        </AnimeCardContainer>
-    );
+const AnimeCard = ({ image, title, genres, rating }) => {
+    return (_jsxs(AnimeCardContainer, { "$imageUrl": image, children: [_jsxs(AnimeCardContent, { children: [_jsx(AnimeCardTitle, { children: title }), _jsx(AnimeCardBoxGenders, { children: genres.map((gender, index) => (_jsx(AnimeCardGender, { children: _jsx(AnimeCardGender, { children: gender }) }, index))) })] }), _jsxs(AnimeCardRate, { "$rating": rating || 0, children: [rating, "%"] })] }));
 };
-
 export default AnimeCard;
-
-const AnimeCardContent = styled.div``
-
-const AnimeCardContainer = styled.div<{ $imageUrl: string }>`
+const AnimeCardContent = styled.div ``;
+const AnimeCardContainer = styled.div `
     width: 317px;
     height: 270px;
     background-color: #ffffff;
@@ -63,10 +41,7 @@ const AnimeCardContainer = styled.div<{ $imageUrl: string }>`
     flex:1
 }
 `;
-
-
-
-const AnimeCardTitle = styled.div`
+const AnimeCardTitle = styled.div `
     color: #fff;
     font-weight: 700;
     font-size: 20px;
@@ -77,9 +52,8 @@ const AnimeCardTitle = styled.div`
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-`
-
-const AnimeCardBoxGenders = styled.div`
+`;
+const AnimeCardBoxGenders = styled.div `
     display: flex;
     gap: 10px;
     overflow-x: auto;
@@ -87,9 +61,8 @@ const AnimeCardBoxGenders = styled.div`
     &::-webkit-scrollbar {
         display: none;
     }
-`
-
-const AnimeCardGender = styled.div`
+`;
+const AnimeCardGender = styled.div `
     background-color:  ${({ theme }) => theme.colors.primary};
     color: #fff;
     font-weight: 400;
@@ -100,9 +73,8 @@ const AnimeCardGender = styled.div`
     font-size: 12px;
     border-radius: 4px;
     line-height: 15.06px;
-`
-
-const AnimeCardRate = styled.div<{ $rating: number }>`
+`;
+const AnimeCardRate = styled.div `
     position: absolute;
     bottom: 10px;
     right: 10px;
@@ -119,10 +91,10 @@ const AnimeCardRate = styled.div<{ $rating: number }>`
    
 
     background-color: ${({ $rating }) => {
-        if ($rating < 50) return '#E92151';
-        if ($rating >= 50 && $rating <= 80) return '#FFB800';
-        return '#01ADA6';
-    }};
-`
-// seguindo a regra: Abaixo de 50, vermelho, entre 50 e 80, amarelo, acima de 80, verde.
-
+    if ($rating < 50)
+        return '#E92151';
+    if ($rating >= 50 && $rating <= 80)
+        return '#FFB800';
+    return '#01ADA6';
+}};
+`;

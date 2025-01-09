@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
-
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle `
 * {
     margin: 0;
     padding: 0;
@@ -110,8 +109,7 @@ input {
   font-size: 0.9rem;
 }
 `;
-
-export const Container = styled.div`
+export const Container = styled.div `
   max-width: 1366px;
   margin: 0 auto;
   padding: 0 20px;
@@ -119,17 +117,4 @@ export const Container = styled.div`
     padding: 0 10px;
   }
 `;
-
-export default GlobalStyle
-
-
-
-
-
-
-
-
-
-
-
-
+export default GlobalStyle;
