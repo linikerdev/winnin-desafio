@@ -1,31 +1,39 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import SearchBar from '../molecules/SearchBar';
-import styled, { useTheme } from 'styled-components';
+import styled from 'styled-components';
 import TopBar from '../molecules/TopBar';
 import Logo from '../atoms/Logo';
 import NavMenu from '../atoms/NavMenu';
 import { Icon } from '@iconify/react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../state';
 import { Container } from '../../style/GlobalStyle';
+import { changeTheme, setQuery } from '../../state/anime/reducer';
 
-type HeaderProps = {
-    searchValue: string | undefined;
-    onSearchChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    onSearch: () => void;
-    onThemeToggle: () => void;
-};
 
-const Header: React.FC<HeaderProps> = ({ searchValue, onSearchChange, onSearch, onThemeToggle }) => {
-    const theme = useSelector((state: RootState) => state.theme.theme);
+const Header = () => {
+    const dispatch = useDispatch();
+    const theme = useSelector((state: RootState) => state.anime.theme);
+    const [searchValue, setSearchValue] = React.useState<string>('');
 
-    const itemMenu = [
-        { label: 'Home', link: '/', isActive: true },
-        { label: 'Home', link: '/', isActive: false },
-        { label: 'Home', link: '/', isActive: false },
-        { label: 'Home', link: '/', isActive: false },
-        { label: 'Home', link: '/', isActive: false },
-    ]
+    const onThemeToggle = () => {
+        dispatch(changeTheme());
+    }
+
+    const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchValue(e.target.value);
+    }
+
+    const onSearch = () => {
+        const args = {
+            page: 1,
+            perPage: 12,
+            search: searchValue?.length === 0 ? null : searchValue,
+            format: null
+        }
+        dispatch(setQuery(args));
+    }
+
     return (
         <HeaderContainer>
             <TopBar>
@@ -44,7 +52,7 @@ const Header: React.FC<HeaderProps> = ({ searchValue, onSearchChange, onSearch, 
                 </ThemeSlice>
             </TopBar>
             <Container>
-                <NavMenu items={itemMenu} />
+                <NavMenu />
                 <SearchBar
                     placeholder="Digite algo aqui..."
                     value={searchValue}

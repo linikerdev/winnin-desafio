@@ -1,16 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 import AnimeCard from '../molecules/AnimeCard';
-import { AnimesState } from '../../interfaces/animes.interface';
+import { AnimeResponseState } from '../../interfaces/animes.interface';
+import { useGetAnimesQuery } from '../../services/api';
+import { RootState } from '../../state';
+import { useSelector } from 'react-redux';
 
-interface GridCardsProps {
-    animes: AnimesState[];
-}
 
-const GridCards: React.FC<GridCardsProps> = ({ animes }) => {
+const GridCards = () => {
+    const query = useSelector((state: RootState) => state.anime.query);
+    const { data } = useGetAnimesQuery(query);
+    const dataAnimes = data?.Page.media
+
     return (
         <GridContainer>
-            {animes && animes.map(anime => (
+            {dataAnimes && dataAnimes.map((anime: AnimeResponseState) => (
                 <AnimeCard
                     title={anime.title.romaji}
                     genres={anime.genres}

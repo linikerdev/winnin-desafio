@@ -6,7 +6,19 @@ export interface Anime {
     rating: number;
 }
 
-export interface AnimesState {
+export interface AnimesProps {
+    page: number
+    perPage: number,
+    format?: FormatMedia
+    search?: string | null
+}
+
+export interface AnimeState {
+    theme: 'light' | 'dark';
+    query: AnimesProps
+}
+
+export interface AnimeResponseState {
     id: number
     title: Title
     genres: string[]
@@ -26,9 +38,7 @@ export interface CoverImage {
 }
 
 
-export interface AnimesProps {
-    page: number
-    perPage: number,
-    genre_in?: string[] | null
-    search?: string | null
-  }
+
+
+
+export type FormatMedia = "TV" | "TVShort" | "Movie" | "Special" | "OVA" | "ONA" | "Music" | "Manga" | "Novel" | "OneShot" | null

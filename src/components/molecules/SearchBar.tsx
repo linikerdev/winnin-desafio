@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 type SearchBarProps = {
     placeholder: string;
-    value: string;
+    value: string | undefined;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onSearch: () => void;
 };
@@ -13,7 +13,7 @@ type SearchBarProps = {
 const SearchBar: React.FC<SearchBarProps> = ({ placeholder, value, onChange, onSearch }) => {
     return (
         <SearchBarContainer>
-            <Input css={{ flex: 1 }} placeholder={placeholder} value={value} onChange={onChange} />
+            <Input css={{ flex: 1 }} placeholder={placeholder} value={value || ""} onChange={onChange} />
             <Button isActive text="Buscar" onClick={onSearch} />
         </SearchBarContainer>
     );

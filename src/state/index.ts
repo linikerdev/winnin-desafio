@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
-import themeReducer from './theme/reducer'
+import animeReducer from './anime/reducer'
 import { api } from '../services/api';
 const persistConfig = {
     key: 'root',
@@ -12,7 +12,7 @@ const persistConfig = {
 
 
 const rootReducer = combineReducers({
-    theme: themeReducer,
+    anime: animeReducer,
     [api.reducerPath]: api.reducer,
 });
 

@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { Anime } from '../../interfaces/animes.interface';
 
-
 const AnimeCard: React.FC<Anime> = ({ image, title, genres, rating }: Anime) => {
     return (
         <AnimeCardContainer $imageUrl={image}>
@@ -19,7 +18,7 @@ const AnimeCard: React.FC<Anime> = ({ image, title, genres, rating }: Anime) => 
                     ))}
                 </AnimeCardBoxGenders>
             </AnimeCardContent>
-            <AnimeCardRate $rating={rating}>{rating}%</AnimeCardRate>
+            <AnimeCardRate $rating={rating || 0}>{rating}%</AnimeCardRate>
         </AnimeCardContainer>
     );
 };
@@ -103,7 +102,7 @@ const AnimeCardGender = styled.div`
     line-height: 15.06px;
 `
 
-const AnimeCardRate = styled.div<{ $rating: string }>`
+const AnimeCardRate = styled.div<{ $rating: number }>`
     position: absolute;
     bottom: 10px;
     right: 10px;

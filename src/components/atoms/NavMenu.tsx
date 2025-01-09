@@ -1,16 +1,48 @@
-import React from 'react';
+import { useState } from 'react';
 import Button from './Button';
+import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { setQuery } from '../../state/anime/reducer';
+import { FormatMedia } from '../../interfaces/animes.interface';
 
-interface NavMenuProps {
-    items: { label: string; href: string, isActive: boolean }[];
-}
+const formatList = [
+    { label: 'All Formats', value: undefined },
+    { label: 'TV', value: 'TV' },
+    { label: 'TV Short', value: 'TV_SHORT' },
+    { label: 'Movie', value: 'MOVIE' },
+    { label: 'Special', value: 'SPECIAL' },
+    { label: 'OVA', value: 'OVA' },
+    { label: 'ONA', value: 'ONA' },
+    { label: 'Music', value: 'MUSIC' },
+    { label: 'Manga', value: 'MANGA' },
+    { label: 'Novel', value: 'NOVEL' },
+    { label: 'One Shot', value: 'ONE_SHOT' },
+]
 
-const NavMenu: React.FC<NavMenuProps> = ({ items }) => {
+const NavMenu = () => {
+    const dispatch = useDispatch();
+    const [activeFormat, setActiveFormat] = useState<FormatMedia | undefined>(undefined);
+
+    const handleFormat = (format: FormatMedia) => {
+        setActiveFormat(format)
+        const args = {
+            page: 1,
+            perPage: 12,
+            search: null,
+            format: format
+        }
+        dispatch(setQuery(args));
+    }
+
     return (
         <Nav>
-            {items.map((item, index) => (
+            {formatList.map((item, index) => (
                 <li key={index}>
-                    <Button isActive={item.isActive} text={item.label} onClick={() => null} />
+                    <Button
+                        isActive={activeFormat === item.value}
+                        text={item.label}
+                        onClick={() => handleFormat(item.value as FormatMedia)}
+                    />
                 </li>
             ))}
         </Nav>
@@ -19,7 +51,6 @@ const NavMenu: React.FC<NavMenuProps> = ({ items }) => {
 
 export default NavMenu;
 
-import styled from 'styled-components';
 
 const Nav = styled.nav`
     display: flex;
@@ -30,6 +61,12 @@ const Nav = styled.nav`
     gap: 1rem;
     margin: 24px;
     padding: 0;
+    max-width: 100%; 
+    overflow: hidden;
+    
+    li{
+        white-space: nowrap;
+    }
   
     @media (max-width: 768px) {
     margin: 24px auto;

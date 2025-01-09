@@ -9,7 +9,7 @@ import { lightTheme } from './style/theme/light.ts'
 import { darkTheme } from './style/theme/dark.ts'
 
 const RootApp = () => {
-  const theme = useSelector((state: RootState) => state.theme.theme);
+  const theme = useSelector((state: RootState) => state.anime.theme);
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyle />
