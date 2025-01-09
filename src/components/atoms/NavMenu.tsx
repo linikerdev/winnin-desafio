@@ -30,4 +30,17 @@ const Nav = styled.nav`
     gap: 1rem;
     margin: 24px;
     padding: 0;
+  
+    @media (max-width: 768px) {
+    margin: 24px auto;
+    padding: 0;
+    padding-left: 4rem;
+    overflow-x: auto;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+
+&::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+}
 `;

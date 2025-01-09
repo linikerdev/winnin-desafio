@@ -57,6 +57,12 @@ const AnimeCardContainer = styled.div<{ $imageUrl: string }>`
         position: relative;
         z-index: 2;
     }
+   
+@media (max-width: 768px) {
+    
+    width: auto;
+    flex:1
+}
 `;
 
 
@@ -111,6 +117,7 @@ const AnimeCardRate = styled.div<{ $rating: string }>`
     align-items: center;
     border-radius: 4px;
     z-index: 2;
+   
 
     background-color: ${({ $rating }) => {
         if (parseInt($rating) < 50) return '#E92151';
