@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from './Button';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { setQuery } from '../../state/anime/reducer';
+import { setQuery, setSearch } from '../../state/anime/reducer';
 import { FormatMedia } from '../../interfaces/animes.interface';
 
 const formatList = [
@@ -28,10 +28,12 @@ const NavMenu = () => {
         const args = {
             page: 1,
             perPage: 12,
-            search: null,
+            search: undefined,
             format: format
         }
+
         dispatch(setQuery(args));
+        dispatch(setSearch(""))
     }
 
     return (

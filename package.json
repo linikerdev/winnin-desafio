@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "clean": "rimraf src/**/**/*.js src/**/**/*.d.ts",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "codegen": "graphql-codegen --config codegen.yml"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@apollo/client": "^3.12.4",
@@ -31,6 +31,7 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^15.14.0",
+    "rimraf": "^6.0.1",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.18.2",
     "vite": "^6.0.5"

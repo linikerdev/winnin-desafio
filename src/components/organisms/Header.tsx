@@ -8,28 +8,28 @@ import { Icon } from '@iconify/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../state';
 import { Container } from '../../style/GlobalStyle';
-import { changeTheme, setQuery } from '../../state/anime/reducer';
+import { changeTheme, setQuery, setSearch } from '../../state/anime/reducer';
 
 
 const Header = () => {
     const dispatch = useDispatch();
-    const theme = useSelector((state: RootState) => state.anime.theme);
-    const [searchValue, setSearchValue] = React.useState<string>('');
+    const { theme, search } = useSelector((state: RootState) => state.anime);
+
 
     const onThemeToggle = () => {
         dispatch(changeTheme());
     }
 
     const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchValue(e.target.value);
+        dispatch(setSearch(e.target.value))
     }
 
     const onSearch = () => {
         const args = {
             page: 1,
             perPage: 12,
-            search: searchValue?.length === 0 ? null : searchValue,
-            format: null
+            search: search?.length === 0 ? null : search,
+            format: undefined
         }
         dispatch(setQuery(args));
     }
@@ -55,7 +55,7 @@ const Header = () => {
                 <NavMenu />
                 <SearchBar
                     placeholder="Digite algo aqui..."
-                    value={searchValue}
+                    value={search}
                     onChange={onSearchChange}
                     onSearch={onSearch}
                 />

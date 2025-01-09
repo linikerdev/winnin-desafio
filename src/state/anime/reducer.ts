@@ -3,12 +3,13 @@ import { AnimesProps, AnimeState } from '../../interfaces/animes.interface';
 
 
 const initialState: AnimeState = {
+  search: undefined,
   theme: 'light',
   query: {
     page: 1,
     perPage: 12,
-    format: null,
-    search: null,
+    format: undefined,
+    search: undefined,
   }
 };
 
@@ -22,8 +23,11 @@ const themeSlice = createSlice({
     setQuery(state, action: PayloadAction<AnimesProps>) {
       state.query = action.payload;
     },
+    setSearch(state, action: PayloadAction<string>) {
+      state.search = action.payload;
+    },
   },
 });
 
-export const { changeTheme, setQuery } = themeSlice.actions;
+export const { changeTheme, setQuery, setSearch } = themeSlice.actions;
 export default themeSlice.reducer;
