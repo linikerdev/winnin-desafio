@@ -12,7 +12,7 @@ const GridCards: React.FC<GridCardsProps> = ({ animes }) => {
         <GridContainer>
             {animes && animes.map(anime => (
                 <AnimeCard
-                    title={anime.title.english}
+                    title={anime.title.romaji}
                     genres={anime.genres}
                     image={anime.coverImage.large}
                     rating={anime.averageScore}
@@ -32,4 +32,7 @@ const GridContainer = styled.div`
     grid-template-columns: repeat(auto-fill, minmax(317px, 1fr));
     gap: 8px;
     padding: 8px;
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
 `;

@@ -7,16 +7,17 @@ import NavMenu from '../atoms/NavMenu';
 import { Icon } from '@iconify/react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state';
+import { Container } from '../../style/GlobalStyle';
 
 type HeaderProps = {
-    searchValue: string;
+    searchValue: string | undefined;
     onSearchChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onSearch: () => void;
     onThemeToggle: () => void;
 };
 
 const Header: React.FC<HeaderProps> = ({ searchValue, onSearchChange, onSearch, onThemeToggle }) => {
-    const theme = useSelector((state: RootState) => state.themeReducer.theme);
+    const theme = useSelector((state: RootState) => state.theme.theme);
 
     const itemMenu = [
         { label: 'Home', link: '/', isActive: true },
@@ -42,13 +43,15 @@ const Header: React.FC<HeaderProps> = ({ searchValue, onSearchChange, onSearch, 
                     />
                 </ThemeSlice>
             </TopBar>
-            <NavMenu items={itemMenu} />
-            <SearchBar
-                placeholder="Digite algo aqui..."
-                value={searchValue}
-                onChange={onSearchChange}
-                onSearch={onSearch}
-            />
+            <Container>
+                <NavMenu items={itemMenu} />
+                <SearchBar
+                    placeholder="Digite algo aqui..."
+                    value={searchValue}
+                    onChange={onSearchChange}
+                    onSearch={onSearch}
+                />
+            </Container>
         </HeaderContainer>
     );
 };

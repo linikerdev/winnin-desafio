@@ -26,4 +26,7 @@ const SearchBarContainer = styled.div`
     display:flex;
     gap: 10px;
     margin: 24px 152px;
+    @media (max-width: 768px) {
+        margin: 24px 16px;
+    }
 `                  

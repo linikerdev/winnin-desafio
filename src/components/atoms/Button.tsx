@@ -5,11 +5,13 @@ type ButtonProps = {
     text: string;
     onClick: () => void;
     isActive?: boolean;
+    disabled?: boolean;
+
 };
 
-const Button: React.FC<ButtonProps> = ({ text, onClick, isActive }) => {
+const Button: React.FC<ButtonProps> = ({ disabled, text, onClick, isActive }) => {
     return (
-        <ButtonItem className={isActive ? 'active' : ''} onClick={onClick} title={text}>
+        <ButtonItem disabled={disabled} className={isActive ? 'active' : ''} onClick={onClick} title={text}>
             {text}
         </ButtonItem>
     );
@@ -39,5 +41,11 @@ const ButtonItem = styled.button`
         &.active {
             background-color: ${({ theme }) => theme.colors.primary}ff;
         } 
+    }
+    &:disabled {
+        background-color: #ccc;
+        color: ${({ theme }) => theme.colors.textInverted};
+        cursor: not-allowed;
+        border: 1px solid #CCC};
     }
 `;

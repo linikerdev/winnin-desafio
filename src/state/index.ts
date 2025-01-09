@@ -7,12 +7,12 @@ const persistConfig = {
     key: 'root',
     storage,
     timeout: 1,
-    whitelist: ['themeReducer'],
+    whitelist: ['theme'],
 }
 
 
 const rootReducer = combineReducers({
-    themeReducer,
+    theme: themeReducer,
     [api.reducerPath]: api.reducer,
 });
 

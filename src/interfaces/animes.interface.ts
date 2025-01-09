@@ -24,3 +24,11 @@ export interface CoverImage {
     large: string;
     extraLarge: string
 }
+
+
+export interface AnimesProps {
+    page: number
+    perPage: number,
+    genre_in?: string[] | null
+    search?: string | null
+  }
