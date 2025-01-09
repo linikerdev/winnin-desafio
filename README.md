@@ -1,50 +1,67 @@
-# React + TypeScript + Vite
+# Winnin Desafio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositório contém o projeto desenvolvido para o desafio da Winnin.
 
-Currently, two official plugins are available:
+### Estrutura do Projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- `/src`: Código fonte do projeto
+  - `/components`: Componentes reutilizáveis da aplicação
+    - `/atoms`: Componentes básicos e independentes
+    - `/molecules`: Componentes compostos por múltiplos átomos
+    - `/templates`: Layouts de página
+  - `/interfaces`: Definições de tipos e interfaces TypeScript
+  - `/services`: Configurações e serviços de API
+  - `/state`: Gerenciamento de estado com Redux
+  - `/style`: Estilos globais e temas
+  - `/tests`: Testes automatizados
 
-## Expanding the ESLint configuration
+### Como Executar
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Clone o repositório:
+  ```sh
+  git clone https://github.com/seu-usuario/winnin-desafio.git
+  ```
+2. Navegue até o diretório do projeto:
+  ```sh
+  cd winnin-desafio
+  ```
+3. Instale as dependências:
+  ```sh
+  npm install
+  ```
+4. Inicie o servidor de desenvolvimento:
+  ```sh
+  npm run dev
+  ```
 
-- Configure the top-level `parserOptions` property like this:
+  Os arquivos de build serão gerados na pasta `dist`.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Funcionalidades
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+  - **Pesquisa de Animes**: Permite pesquisar animes por título.
+  - **Filtragem por Formato**: Permite filtrar animes por formato (Manga, Novel, etc.).
+  - **Atualização de Formato**: Permite atualizar o formato de um anime específico.
+  - **Tema Claro/Escuro**: Suporte a temas claro e escuro.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Bibliotecas Utilizadas
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+  - **React**: Biblioteca para construção de interfaces de usuário.
+  - **Redux**: Gerenciamento de estado da aplicação.
+  - **TypeScript**: Superset do JavaScript que adiciona tipagem estática.
+  - **Axios**: Cliente HTTP para realizar requisições à API.
+  - **Styled-Components**: Biblioteca para estilização de componentes.
+  - **Jest**: Framework de testes para JavaScript.
+  - **React Testing Library**: Utilitários para testes de componentes React.
+
+### Padrões de Projeto
+
+  - **Atomic Design**: Organização dos componentes em átomos, moléculas e templates.
+  - **Ducks Pattern**: Estruturação dos módulos Redux para melhor organização.
+  - **Component-Based Architecture**: Desenvolvimento baseado em componentes reutilizáveis.
+  - **RESTful API**: Comunicação com a API seguindo os princípios REST.
+  - **Theming**: Suporte a múltiplos temas (claro e escuro) utilizando styled-components.
+
+### Autor
+
+- **Nome**: Liniker Silva
+- **Email**: contato@liniker.com.br
