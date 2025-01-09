@@ -6,16 +6,16 @@ import { useDispatch } from 'react-redux';
 import { setQuery } from '../../state/anime/reducer';
 const formatList = [
     { label: 'All Formats', value: undefined },
-    { label: 'TV', value: 'TV' },
+    { label: 'TV Show', value: 'TV' },
     { label: 'TV Short', value: 'TV_SHORT' },
     { label: 'Movie', value: 'MOVIE' },
     { label: 'Special', value: 'SPECIAL' },
     { label: 'OVA', value: 'OVA' },
     { label: 'ONA', value: 'ONA' },
     { label: 'Music', value: 'MUSIC' },
-    { label: 'Manga', value: 'MANGA' },
-    { label: 'Novel', value: 'NOVEL' },
-    { label: 'One Shot', value: 'ONE_SHOT' },
+    // { label: 'Manga', value: 'MANGA' },
+    // { label: 'Novel', value: 'NOVEL' },
+    // { label: 'One Shot', value: 'ONE_SHOT' },
 ];
 const NavMenu = () => {
     const dispatch = useDispatch();
