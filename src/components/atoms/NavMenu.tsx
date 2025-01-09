@@ -14,9 +14,9 @@ const formatList = [
     { label: 'OVA', value: 'OVA' },
     { label: 'ONA', value: 'ONA' },
     { label: 'Music', value: 'MUSIC' },
-    { label: 'Manga', value: 'MANGA' },
-    { label: 'Novel', value: 'NOVEL' },
-    { label: 'One Shot', value: 'ONE_SHOT' },
+    // { label: 'Manga', value: 'MANGA' },
+    // { label: 'Novel', value: 'NOVEL' },
+    // { label: 'One Shot', value: 'ONE_SHOT' },
 ]
 
 const NavMenu = () => {
