@@ -1,5 +1,8 @@
 import React from 'react';
 
+import styled from 'styled-components';
+import Logo from '../atoms/Logo';
+
 
 const Footer: React.FC = () => {
   return (
@@ -11,9 +14,6 @@ const Footer: React.FC = () => {
 };
 
 export default Footer;
-
-import styled from 'styled-components';
-import Logo from '../atoms/Logo';
 
 const FooterSlice = styled.footer`
   background-color: ${({ theme }) => theme.colors.primary};
