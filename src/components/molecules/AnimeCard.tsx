@@ -28,8 +28,9 @@ export default AnimeCard;
 const AnimeCardContent = styled.div``
 
 const AnimeCardContainer = styled.div<{ $imageUrl: string }>`
-    width: 317px;
+    max-width: 317px;
     height: 270px;
+    flex: 1;
     background-color: #ffffff;
     border: 1px solid #ccc;
     border-radius: 8px;

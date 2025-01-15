@@ -32,11 +32,14 @@ export default GridCards;
 
 const GridContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(317px, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 10px;
     padding: 8px;
+    max-width: 100%;
     @media (max-width: 768px) {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        
+    }
+    @media (min-width: 1024px) {
+        grid-template-columns: repeat(4, 1fr);
     }
 `;

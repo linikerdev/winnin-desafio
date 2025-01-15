@@ -1,18 +1,22 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { CSSObject } from 'styled-components';
+import { Icon, IconifyIcon } from '@iconify/react';
+
 
 type ButtonProps = {
     text: string;
     onClick: () => void;
     isActive?: boolean;
     disabled?: boolean;
+    icon?: IconifyIcon | string;
+    css?: CSSObject
 
 };
 
-const Button: React.FC<ButtonProps> = ({ disabled, text, onClick, isActive }) => {
+const Button: React.FC<ButtonProps> = ({ css, icon, disabled, text, onClick, isActive }) => {
     return (
-        <ButtonItem disabled={disabled} className={isActive ? 'active' : ''} onClick={onClick} title={text}>
-            {text}
+        <ButtonItem style={css} disabled={disabled} className={isActive ? 'active' : ''} onClick={onClick} title={text}>
+            {icon && <Icon icon={icon} />} {text}
         </ButtonItem>
     );
 };
