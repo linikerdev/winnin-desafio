@@ -2,6 +2,10 @@
 
 Este repositório contém o projeto desenvolvido para o desafio da Winnin.
 
+### Image referencia
+
+![Imagem do Projeto](https://raw.githubusercontent.com/linikerdev/winnin-desafio/refs/heads/master/public/print.png)
+
 ### Estrutura do Projeto
 
 - `/src`: Código fonte do projeto
